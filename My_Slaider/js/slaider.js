@@ -1,4 +1,5 @@
   
+ /*
   //Forward Moving Function start
   function slideChangeForward() {
     
@@ -75,6 +76,85 @@ document.querySelector(".left").setAttribute("style","color:#9b89fef6;");
   
 });
 //left side
+//auto moving 
+setInterval(slideChangeForward,3700);
+*/
+
+// Slider for past projects  Start 
+const rightBtn = document.querySelector('.SlaiderItems .right') ;
+const leftBtn = document.querySelector('.SlaiderItems .left') ;
+
+//  curred slider function
+const slideShow = (slideItemsQuantity= 1 ,moveType = 'Forward') => {
+  
+  let maxIndex = slideItemsQuantity - 1 ; // max value of class index .
+  let i = 0 , counter = 0; // initializer
+ if ( moveType.match(/Forwards?/i) ) {
+  // Forward moving function
+  return () => {
+   let slides = document.getElementsByClassName('SlaiderItems')[i];
+  let queary = slides.classList.contains("active");
+  // for creating Infinity loop we have to connect the last and first slides 
+  if(i==maxIndex){
+    slides.classList.remove('active');
+    slides = document.getElementsByClassName('SlaiderItems')[0];
+    slides.classList.add('active');
+  }
+  
+  // Forward moving Queary
+ else if(queary){
+    slides.classList.remove('active');
+    slides = document.getElementsByClassName('SlaiderItems')[i+1];
+    slides.classList.add('active');
+  }else{
+     slides.classList.add('active');
+  }
+  i++;
+  if(i >= slideItemsQuantity ){
+    i = 0 
+  }
+  
+} // Forward function
+
+} else if (moveType.match(/backwards?/i) )
+{
+  // Backward moving function
+  return () => {
+   
+   let slides = document.getElementsByClassName('SlaiderItems')[counter];
+   let queary = slides.classList.contains("active");
+  // for creating Infinity loop we have to connect the last and first slides 
+  if(counter==0){
+    slides.classList.remove('active');
+    slides = document.getElementsByClassName('SlaiderItems')[maxIndex];
+    slides.classList.add('active');
+  }
+  
+  // Forward moving Queary
+ else if(queary){
+    slides.classList.remove('active');
+    slides = document.getElementsByClassName('SlaiderItems')[counter-1];
+    slides.classList.add('active');
+  }else{
+     slides.classList.add('active');
+  }
+  counter--;
+  if(counter <= -1 ){
+    counter = maxIndex
+  }
+} 
+
+} // backward moving function 
+};
+
+ let forward = slideShow(7,'forward');
+ let backward = slideShow(7,'backward');
+
+ rightBtn.addEventListener('click',forward);
+ leftBtn.addEventListener('click',backward);
+ setInterval(forward,3700);//For Auto change effect 
+// Slider for past projects  Start 
+
 document.querySelector(".SlaiderItems .left").addEventListener("click",slideChangeBackward);
 document.querySelector(".left").addEventListener("click", function (){
   
@@ -82,5 +162,3 @@ document.querySelector(".left").addEventListener("click", function (){
   
 document.querySelector(".right").setAttribute("style","color:#9b89fef6;");
 });
-//auto moving 
-setInterval(slideChangeForward,3700);
