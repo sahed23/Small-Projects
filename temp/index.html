@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider Puzzle</title>
+		<script
+			src="https://kit.fontawesome.com/2d7fe92bf9.js"
+			crossorigin="anonymous"
+			defer
+		></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/games/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="toolbar-3s" role="toolbar">
+        <section>
+          <span>মুভ <span class="stat" id="moves">00</span></span>
+        </section>
+        <section>
+          <span><span class="stat" id="time">00:00</span></span>
+        </section>
+        <section>
+          <button class="btn" onclick="game.pause()" style="display: none;" id="pauseBtn">
+            <i class="fa fa-pause"></i>
+          </button>
+          <button class="btn" onclick="game.resume()" style="display: none;" id="resumeBtn">
+            <i class="fa fa-play"></i>
+          </button>
+          <button class="btn" onclick="game.start()" style="margin-left: auto;">
+            <i class="fa fa-undo"></i>
+          </button>
+        </section>
+      </div>
+      <div class="aspect-1x1">
+        <div style="width: 100%;height: 100%;background-color: #2e3436;">
+          <div style="margin-top: 43%;" id="msg"></div>
+        </div>
+        <div id="box"></div>
+      </div>
+      <div class="toolbar-3s" id="arrows">
+        <section style="justify-content: flex-end;">
+          <button class="btn" onclick="game.moveTileByDir('Left')">
+            <i class="fa fa-arrow-left"></i>
+          </button>
+        </section>
+        <section style="flex-direction: column;">
+          <button class="btn" onclick="game.moveTileByDir('Up')">
+            <i class="fa fa-arrow-up"></i>
+          </button>
+          <button class="btn" onclick="game.moveTileByDir('Down')">
+            <i class="fa fa-arrow-down"></i>
+          </button>
+        </section>
+        <section>
+          <button class="btn" onclick="game.moveTileByDir('Right')">
+            <i class="fa fa-arrow-right"></i>
+          </button>
+        </section>
+      </div>
+      <nav class="fixed-bottom text-center py-1">
+        <a href="/quizzes" class="btn btn-sm btn-light">
+          <span>কুইজ সমূহ</span>
+        </a>
+      </nav>
+    </div>
+    <style id="tiles">
+      #box div {
+        background-image: initial;
+        background-size: initial;
+        box-shadow: inset 1px 1px 3px 0px #000000EE,
+          inset -1px -1px 3px 0px #000000EE;
+      }
+      @media only screen and (orientation: landscape) {
+        #arrows {
+          display: none;
+        }
+      }
+    </style>
+    <script src="/games/slider-puzzle/index.js"></script>
+  </body>
+</html>
