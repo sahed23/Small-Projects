@@ -10,4 +10,4 @@ The intention of these people is admirable .
 # Author 
 - Sahedul Islam Rony 
 - Programmer and Student 
-- Email : [sahedulislamofficial@gmail.com](https://mailto:sahedulislamofficial@gmail.com)
+- Email : [sahedulislamofficial@gmail.com](mailto:sahedulislamofficial@gmail.com)
